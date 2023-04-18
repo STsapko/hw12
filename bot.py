@@ -191,7 +191,7 @@ def search(*args):
     search = list_of_params[1]
     result = ''
     for record in address_book.values():
-        if (column == 'name' and record.name.value.find(search)>=0) or (column == 'phone' and [ph.phone for ph in record.phones if search in ph.phone]):
+        if (column == 'name' and record.name.value.find(search)>=0) or (column == 'phone' and [ph.phone for ph in record.phones if ph.phone.value.find(search) >= 0]):
             result += f"Name: {record.name}, phones: {'-' if not [ph.phone for ph in record.phones] else [ph.phone for ph in record.phones]}, email: {'-' if not record.email else record.email}, birthday: {'-' if not record.birthday else record.birthday}" +'\n'
     return 'no matches' if not result else result
 
